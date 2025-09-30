@@ -1,14 +1,15 @@
 {
-  "extends": ["config:base"],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["apps/kargo/.*/kustomization\\.yaml$"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/apps/kargo/.*/kustomization\\.yaml$/"
+      ],
       "matchStrings": [
         "name:\\s*kargo[\\s\\S]*?version:\\s*(?<currentValue>.*)"
       ],
-      "depNameTemplate": "kargo",
-      "datasourceTemplate": "helm",
-      "registryUrlTemplate": "oci://ghcr.io/akuity/kargo-charts"
+      "depNameTemplate": "ghcr.io/akuity/kargo-charts/kargo",
+      "datasourceTemplate": "docker"
     }
   ]
 }
