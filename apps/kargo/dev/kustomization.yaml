@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../../base
+  - ../../../../base/sharded-clusters-kubeconfig-secret.yaml # all sharded clusters use the same
+
+helmCharts:
+  - name: kargo
+    repo: oci://ghcr.io/akuity/kargo-charts
+    version: 1.7.4
+    releaseName: kargo
+    namespace: kargo
+    valuesFile: ../../../../base/values.yaml
+    additionalValuesFiles:
+      - values.yaml
+    valuesMerge: merge 
