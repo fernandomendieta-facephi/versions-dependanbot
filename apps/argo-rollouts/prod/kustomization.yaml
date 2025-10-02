@@ -9,7 +9,7 @@ resources:
 helmCharts:
   - name: argo-rollouts
     repo: https://argoproj.github.io/argo-helm
-    version: 2.40.3
+    version: 2.40.5
     releaseName: argo-rollouts
     namespace: argo-rollouts
     valuesFile: ../../../../base/values.yaml
